@@ -64,6 +64,10 @@ export class ClientCommandProcessor {
         );
     }
 
+    public updateImpaceSingleTime() {
+        this.updateImage();
+    }
+
     public isImageUpdating(): boolean {
         return this.imageUpdateTimer != null;
     }
@@ -103,9 +107,20 @@ export class ClientCommandProcessor {
                         id
                     )
                 );
-                if (!this.isImageUpdating()) {
-                    this.startImageUpdating();
-                }
+                // if (!this.isImageUpdating()) {
+                //     this.startImageUpdating();
+                // }
+                this.updateImpaceSingleTime();
+                break;
+            case PicturesNamespace.UPDATE_PICTURE:
+                this.sendMessage(
+                    new JsonRpcCommand(
+                        method,
+                        this.pictureCommands.getPictureSelector(),
+                        id
+                    )
+                );
+                this.updateImpaceSingleTime();
                 break;
             default:
                 this.sendMessage(

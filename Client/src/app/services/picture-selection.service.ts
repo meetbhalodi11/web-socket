@@ -28,6 +28,7 @@ export class DropDownData {
 // This is the layer between the backend-communication.service and the components
 export class PictureSelectionService {
     public static GET_PICTURE_SELECTOR: string = 'pictures:getSelector';
+    public static UPDATE_PICTURE: string = 'pictures:updatePicture';
 
     private commandCollection = new Map<string, CommandHandler<any>>();
     private backendCommunicationService = inject(BackendCommunicationService);
@@ -81,6 +82,13 @@ export class PictureSelectionService {
                 updateSubscription.unsubscribe();
             };
         });
+    }
+
+    public updateImageSingleTime() {
+        this.backendCommunicationService
+            .sendCommand$(PictureSelectionService.UPDATE_PICTURE)
+            .pipe(take(1))
+            .subscribe();
     }
 
     // Observable version: Subscribe to updates

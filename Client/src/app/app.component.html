@@ -55,6 +55,21 @@
                         Control is enabled
                     </p>
                 </div>
+
+                <button
+                    class="update-image"
+                    mat-flat-button
+                    color="primary"
+                    (click)="updateImageSingleTime()"
+                >
+                    Send command to update image
+                </button>
+
+                <div class="note">
+                    Note: I have disable auto updation of image from backend,
+                    Instead created a message which will trigger message to
+                    update image
+                </div>
             </mat-card-content>
         </mat-card>
     </div>

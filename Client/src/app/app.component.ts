@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NgIf, NgFor } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import {
     DropDownData,
     PictureSelectionService,
@@ -12,7 +13,7 @@ import { Subscription } from 'rxjs';
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [NgIf, NgFor, MatSelectModule, MatCardModule],
+    imports: [NgIf, NgFor, MatSelectModule, MatCardModule, MatButtonModule],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
 })
@@ -24,6 +25,10 @@ export class AppComponent implements OnInit, OnDestroy {
     public selectedImageLabel = signal<string>('');
 
     private pictureSelectionService = inject(PictureSelectionService);
+
+    public updateImageSingleTime() {
+        this.pictureSelectionService.updateImageSingleTime();
+    }
 
     ngOnInit() {
         this.subscription = this.pictureSelectionService

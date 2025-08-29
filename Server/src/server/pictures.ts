@@ -16,6 +16,7 @@ export class DropDownControlData {
 
 export class PicturesNamespace {
     public static GET_PICTURE_SELECTOR: string = 'pictures:getSelector';
+    public static UPDATE_PICTURE: string = 'pictures:updatePicture';
 
     private imageOptions: DropDownOption[] = [
         new DropDownOption(1, 'Audio', 'audio.png'),
