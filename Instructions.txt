@@ -1,0 +1,25 @@
+Using the basic client-server setup provided create an image selection dropdown that controls what is displayed in another part of the screen
+See Assignment.png for a basic sketch of the expected UI; use whatever UI toolkit you wish).
+Instructions to run the client and server are in README files in the respective directories.
+The server code may crash periodically; just restart and keep going.
+
+The app should have
+1. A Control pane, where the selection dropdown goes
+2. A Display pane, where the selected image is displayed (with the associated image label underneath)
+3. The Control pane should appear to the right of the Display pane, unless the screen is under 800 pixels wide (then the Control pane should be on top of the Display pane)
+4. Control pane should contain a dropdown to select from a list of images.
+5. The information for constructing the dropdown comes from a call to the backend server (pictures:getSelector)
+6. The client needs to register for updates from the backend and reflect those updates on the page (both changes to selected index and enabled/disabled status)
+7. Images are in the assets folder
+9. This code works, but it was slapped together somewhat quickly to provide an assignment�
+10. Describe 3 ways that you would improve the code that was given to you at the start of the assignment
+
+This assignment was successfully built using node v20.12.2 and Angular 17
+Please share the response of this assignment using e.g. google drive, github etc.
+
+
+Scope of improvements
+
+1. Get out of callback hell -> swithc of observalbe pattern for better flow understanding
+2. Add eslint for better code management / avoid unnecessary imports
+3. If there are lots of images the use of image sprite

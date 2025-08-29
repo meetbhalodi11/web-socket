@@ -1,0 +1,61 @@
+<div class="page-container">
+    <div class="app-layout">
+        <!-- Display Panel -->
+        <mat-card class="display-pane">
+            <mat-card-content class="card-height">
+                <div class="image-container">
+                    <img
+                        *ngIf="picData() && selectedImagePath()"
+                        [src]="selectedImagePath()"
+                        [alt]="selectedImageLabel()"
+                        class="selected-image"
+                    />
+                    <div
+                        *ngIf="!picData() || !selectedImagePath()"
+                        class="no-image"
+                    >
+                        Loading image...
+                    </div>
+                </div>
+                <div class="image-label">
+                    {{ selectedImageLabel() || "Loading image label..." }}
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <!-- Control Panel -->
+        <mat-card class="control-pane">
+            <mat-card-header>
+                <mat-card-title>Image Selection</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="card-height">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Select Image</mat-label>
+                    <mat-select
+                        [disabled]="picData()?.disabled"
+                        [value]="picData()?.selectedIndex"
+                    >
+                        <mat-option
+                            *ngFor="
+                                let option of picData()?.options;
+                                let i = index
+                            "
+                            [value]="i"
+                        >
+                            {{ option.label }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="status-info">
+                    <p *ngIf="picData()?.disabled" class="disabled-status">
+                        Control is disabled
+                    </p>
+                    <p *ngIf="!picData()?.disabled" class="enabled-status">
+                        Control is enabled
+                    </p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
