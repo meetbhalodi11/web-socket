@@ -88,14 +88,19 @@ export class BackendCommunicationService {
                 setTimeout(() => {
                     if (this.socket.readyState === this.socket.OPEN) {
                         this.socket.send(queryString);
+                        observer.next(
+                            'Update picture command sent successfully'
+                        );
+                        observer.complete();
                     } else {
                         observer.error('Websocket connection failed');
                     }
                 }, 400);
             } else {
                 this.socket.send(queryString);
+                observer.next('Update picture command sent successfully');
+                observer.complete();
             }
-            return () => {};
         });
     }
 

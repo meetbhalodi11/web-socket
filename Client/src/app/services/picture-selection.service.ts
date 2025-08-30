@@ -88,7 +88,14 @@ export class PictureSelectionService {
         this.backendCommunicationService
             .sendCommand$(PictureSelectionService.UPDATE_PICTURE)
             .pipe(take(1))
-            .subscribe();
+            .subscribe({
+                next: (response) => {
+                    console.info(response);
+                },
+                error: (error) => {
+                    console.error(error);
+                },
+            });
     }
 
     // Observable version: Subscribe to updates
